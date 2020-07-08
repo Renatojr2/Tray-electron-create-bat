@@ -1,4 +1,2 @@
-pause 
- echo hello, World 
- pause 
- start calc.exe
+echo hello, World 
+start calc.exe
