@@ -17,6 +17,7 @@ app.on('ready', () => {
         shell.openPath(
           'exemplo.bat'
         )
+        // shell.openExternal('https://github.com')
 
         // execFileSync('cmd.exe', [], {shell: true})
       }
@@ -26,6 +27,7 @@ app.on('ready', () => {
 })
 
 function createBat () {
-  let echo = 'pause \n echo hello, World \n pause \n start calc.exe'
+  let world = 'world'
+let echo = `@echo off \n pause \n echo hello, ${world} \n pause \n start calc.exe \n md batFile`
   fs.writeFileSync('exemplo.bat', echo)
 }
