@@ -1,8 +1,5 @@
-const { app, Tray, Menu } = require('electron')
-const util = require('util')
+const { app, Tray, Menu, shell } = require('electron')
 const fs = require('fs')
-
-const { spawn, execFileSync } = require('child_process')
 
 let tray
 const path = 'C:\\Users\\momen\\Documents\\electron\\tray\\exemplo.bat'
@@ -17,19 +14,11 @@ app.on('ready', () => {
     {
       label: 'Exec Bat',
       click: () => {
-        const bat = spawn('cmd.exe', ['/c', 'exemplo.bat'])
+        shell.openPath(
+          'exemplo.bat'
+        )
 
-        bat.stdout.on('data', data => {
-          console.log(data.toString())
-        })
-
-        bat.stderr.on('data', data => {
-          console.error(data.toString())
-        })
-
-        bat.on('exit', code => {
-          console.log(`Child exited with code ${code}`)
-        })
+        // execFileSync('cmd.exe', [], {shell: true})
       }
     }
   ])
